@@ -12,6 +12,7 @@ export default function RegisterPage() {
     password: ''
   });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // Loader state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +22,14 @@ export default function RegisterPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true); // Show loader
+
+    // Password length validation
+    if (formData.password.length < 6) {
+      setError('Password should be at least 6 characters long');
+      setLoading(false); // Hide loader
+      return;
+    }
 
     try {
       const registerResponse = await fetch('https://todos-api-aeaf.onrender.com/api/v1/auth/register', {
@@ -48,6 +57,8 @@ export default function RegisterPage() {
       }
     } catch (err) {
       setError('Registration failed');
+    } finally {
+      setLoading(false); // Hide loader
     }
   };
 
@@ -102,8 +113,9 @@ export default function RegisterPage() {
           <button 
             type="submit" 
             className="w-full py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+            disabled={loading} // Disable button while loading
           >
-            Register
+            {loading ? "Registering..." : "Register"} {/* Loader Text */}
           </button>
         </form>
 
@@ -116,9 +128,10 @@ export default function RegisterPage() {
           </p>
         </div>
 
-       
+        <div className="flex items-center justify-center">
+          <div className="w-full border-t border-gray-300"></div>
+        </div>
 
-        
       </div>
     </div>
   );
