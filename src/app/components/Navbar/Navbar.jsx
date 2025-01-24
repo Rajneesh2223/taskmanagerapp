@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <h1 className="text-2xl sm:text-4xl font-semibold font-Bona_Nova">To Do App</h1>
           
-          {/* Mobile Menu Toggle */}
+        
           <div className="sm:hidden">
             <button 
               onClick={toggleMobileMenu} 
@@ -38,7 +38,7 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Desktop Navigation */}
+         
           <ul className="hidden sm:flex justify-center items-center gap-6 text-sm">
             <li><Link href="/" className="hover:text-blue-300">Home</Link></li>
             {session ? (
@@ -61,7 +61,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        
         {mobileMenuOpen && (
           <div className="sm:hidden absolute top-16 left-0 w-full bg-[#0A0A0A] z-50">
             <ul className="flex flex-col items-center space-y-4 py-6">

@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Inconsolata, Jersey_15 } from '@next/font/google';
+
 import { Bona_Nova_SC } from 'next/font/google';
 
 import "./globals.css";
@@ -8,21 +8,13 @@ import Navbar from "./components/Navbar/Navbar";
 import { Providers } from "./components/Providers";
 
 const bonaNovaSC = Bona_Nova_SC({
-  subsets: ['latin'], // Choose the subset you need
-  weight: ['400', '700'], // Include the required weights
-  style: ['normal', 'italic'], // Add styles as needed
-  variable: '--font-bona-nova', // Optional: Custom CSS variable
+  subsets: ['latin'], 
+  weight: ['400', '700'], 
+  style: ['normal', 'italic'], 
+  variable: '--font-bona-nova', 
 });
 
-const inconsolata = Inconsolata({
-  subsets: ['latin'],
-  weight: ['200', '400', '900'], // Add the desired weights
-});
 
-const jersey = Jersey_15({
-  subsets: ['latin'],
-  weight:['400']
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +35,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jersey.variable} ${inconsolata.variable} ${bonaNovaSC.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}  ${bonaNovaSC.variable} antialiased`}
       >
        
         <Providers>

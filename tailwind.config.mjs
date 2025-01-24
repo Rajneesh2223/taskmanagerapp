@@ -12,8 +12,6 @@ export default {
       fontFamily:{
         geistSans: "var(--font-geist-sans)",
         geistMono: "var(--font-geist-mono)",
-        jersey: "var(--font-jersey)",
-        inconsolata: "var(--font-inconsolata)",
         Bona_Nova : "var(--font-bona-nova)"
       },
       colors: {

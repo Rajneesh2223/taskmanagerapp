@@ -115,7 +115,7 @@ const Page = () => {
       <div className="container mx-auto">
         <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-white">Task Statistics</h1>
         
-        {/* Mobile Chart Navigation */}
+     
         <div className="block sm:hidden mb-4">
           <div className="flex justify-between space-x-2">
             {['pie', 'bar', 'line'].map((chart) => (
@@ -135,7 +135,7 @@ const Page = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          {/* Pie Chart */}
+        
           <div className={`
             bg-white shadow-md rounded-lg p-4 
             ${activeChart === 'pie' || 'hidden sm:block'}
@@ -144,7 +144,7 @@ const Page = () => {
             <Pie data={pieChartData} />
           </div>
           
-          {/* Bar Chart */}
+ 
           <div className={`
             bg-white shadow-md rounded-lg p-4 
             ${activeChart === 'bar' || 'hidden sm:block'}
@@ -162,7 +162,7 @@ const Page = () => {
             />
           </div>
           
-          {/* Line Chart */}
+        
           <div className={`
             sm:col-span-2 bg-white shadow-md rounded-lg p-4 
             ${activeChart === 'line' || 'hidden sm:block'}

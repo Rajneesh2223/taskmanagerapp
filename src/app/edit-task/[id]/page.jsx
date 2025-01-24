@@ -18,7 +18,7 @@ const EditTaskPage = () => {
   
   const router = useRouter();
   const { id } = useParams();
-  console.log(id)
+  // console.log(id)
 
   useEffect(() => {
     if (id && authToken) {

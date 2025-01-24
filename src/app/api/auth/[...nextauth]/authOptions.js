@@ -45,7 +45,7 @@ export const authOptions = {
             token: data.data.token 
           };
         } catch (error) {
-          console.error("Authentication Error:", error);  // Log errors
+          console.error("Authentication Error:", error);  
           return null;
         }
       }
@@ -63,7 +63,7 @@ export const authOptions = {
         token.name = user.name;
         token.token = user.token;
       }
-      console.log("token of the user" ,token.token)
+      // console.log("token of the user" ,token.token)
       return token;
     },
     async session({ session, token }) {
@@ -75,7 +75,7 @@ export const authOptions = {
           token: token.token 
         };
       }
-      console.log('session data of the user ' ,session)
+      // console.log('session data of the user ' ,session)
       return session;
     }
   },

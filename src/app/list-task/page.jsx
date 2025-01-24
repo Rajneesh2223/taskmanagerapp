@@ -215,7 +215,7 @@ const TaskList = () => {
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
-            setCurrentPage(1); // Reset to first page on search
+            setCurrentPage(1); 
           }}
         />
 
@@ -224,7 +224,7 @@ const TaskList = () => {
             filter={filter}
             setFilter={(newFilter) => {
               setFilter(newFilter);
-              setCurrentPage(1); // Reset to first page on filter change
+              setCurrentPage(1); 
             }}
           />
 
@@ -262,7 +262,7 @@ const TaskList = () => {
             Remove All
           </button>
         </div>
-
+         <div><p className="text-red-500 italic font-bold text-sm">Click on the task name to get the details of the task </p></div>
         {isLoading ? (
           <div className="text-center py-4">
             <p className="text-gray-500">Loading tasks...</p>

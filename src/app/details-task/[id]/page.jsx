@@ -70,17 +70,17 @@ const Page = () => {
         throw new Error("Failed to delete task");
       }
 
-      // Store the entire task details for undo
+     
       setDeletedTask({
-        ...task, // Spread all existing task properties
-        originalId: id // Keep track of original ID
+        ...task,
+        originalId: id 
       });
 
-      // Set a timer for undo functionality
+   
       const timer = setTimeout(() => {
         setDeletedTask(null);
         router.push("/list-task");
-      }, 10000); // 5 seconds to undo
+      }, 10000); 
 
       setUndoTimer(timer);
       setDeleteLoading(false);
@@ -107,11 +107,11 @@ const Page = () => {
               name: deletedTask.name,
               description: deletedTask.description,
               status: deletedTask.status || 'pending',
-              // Include any additional fields from the original task
+              
               priority: deletedTask.priority,
               dueDate: deletedTask.dueDate,
               tags: deletedTask.tags,
-              // Add any other relevant fields from your task object
+              
             }),
           }
         );
@@ -120,7 +120,7 @@ const Page = () => {
           throw new Error(`Failed to restore task: ${response.statusText}`);
         }
 
-        // Clear the deleted task and timer
+       
         setDeletedTask(null);
         setUndoTimer(null);
         router.push("/list-task");

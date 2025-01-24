@@ -37,7 +37,7 @@ export default function LoginPage() {
         if (token) {
           localStorage.setItem('authToken', token);
         }
-        console.log("token of the user in the login page " , token )
+        // console.log("token of the user in the login page " , token )
         router.push('/list-task');
       }
     } catch (err) {
