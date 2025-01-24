@@ -10,7 +10,7 @@ export default function HomePage() {
       <Image className="rounded-lg" src={logo} alt="Example Image" width={300} height={300} />
           </div>
           <section className="space-y-4">
-            <h1 className="text-4xl font-bold font-jersey">Welcome to Your <span className=" rounded-md bg-red-500 px-1 text-black font-mono">Task Manager App</span></h1>
+            <h1 className="lg:text-4xl md:3xl sm:3xl 2xl font-bold font-jersey">Welcome to Your <span className=" rounded-md bg-red-500 px-1 text-black font-mono">Task Manager App</span></h1>
            
           </section>
         </div>

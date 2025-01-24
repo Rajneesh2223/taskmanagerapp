@@ -1,9 +1,8 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-
 
 export default function AddTaskPage() {
   const [name, setName] = useState("");
@@ -12,14 +11,23 @@ export default function AddTaskPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const {data:session } = useSession()
-   
-  const authToken = session?.user?.token ;
- 
+  const { data: session } = useSession();
+  const authToken = session?.user?.token;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError(""); 
+
+  
+    if (name.length >= 20) {
+      setError("Task name must be less than 20 characters.");
+      return;
+    }
+
+    if (description.length >= 250) {
+      setError("Task description must be less than 250 characters.");
+      return;
+    }
 
     if (!status) {
       setError("Please select a task status.");
@@ -47,7 +55,7 @@ export default function AddTaskPage() {
         throw new Error("Failed to create task");
       }
 
-      router.push("/");
+      router.push("/list-task");
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "An unknown error occurred"
@@ -57,8 +65,8 @@ export default function AddTaskPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center p-4">
-    <div className="bg-gradient-to-tr from-[#2c2a2a] to-[#3a3738] p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-700">
-      <h1 className="text-3xl font-extrabold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-600 font-Bona_Nova">Add New Task</h1>
+      <div className="bg-gradient-to-tr from-[#2c2a2a] to-[#3a3738] p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-700">
+        <h1 className="text-3xl font-extrabold mb-6 text-center font-Bona_Nova text-white">Add New Task</h1>
 
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
@@ -79,6 +87,7 @@ export default function AddTaskPage() {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              maxLength={30}
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter task name"
@@ -97,6 +106,7 @@ export default function AddTaskPage() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
+              maxLength={250}
               rows={4}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter task description"
